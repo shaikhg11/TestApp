@@ -1,0 +1,75 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Soum CRUD API",
+        "description": "Soum CRUD API",
+        "contact": {
+            "name": "Aman",
+            "email": "shaikhg11@hotmail.com"
+        }
+    },
+    "basePath": "/api/v1",
+    "paths": {
+        "/GetAllCattegories": {
+            "get": {
+                "tags": ["Category"],
+                "summary": "Get all cattegories in system",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Category"
+                        }
+                    }
+                }
+            }
+        },
+        "/CategoryList": {
+            "get": {
+                "tags": ["Category"],
+                "summary": "Get all cattegories in system",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Category"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "parentId",
+                        "in": "path",
+                        "description": "parent id to filter categories",
+                        "required": false,
+                        "schema": {
+                            "type": "int"
+                        },
+                        "style": "simple"
+                    }
+                  ]
+            }
+        }
+    },
+    "definitions": {
+        "Category": {
+            "required": ["CategpyId", "CategoryName"],
+            "properties": {
+                "CategpyId": {
+                    "type": "integer",
+                    "uniqueItems": true
+                },
+                "CategoryName": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "ParentId": {
+                    "type": "integer",
+                    "uniqueItems": true
+                }
+
+            }
+        }
+    }
+}
